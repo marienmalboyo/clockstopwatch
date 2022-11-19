@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Marien Malboyo</title>
+  <link rel="stylesheet" href="clock style.css">
+   <a href="stopwatch.html"</a>
+</head>
+
+<body>
+  <div class="clock">
+    <div class="time"></div>
+    <div class="date-time"></div>
+  </div>
+
+  <script>
+    var time = document.querySelector('.time');
+    var dateTime = document.querySelector('.date-time');
+
+    function updateClock() {
+      // Get the current time, day , month and year
+      var now = new Date();
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+      var seconds = now.getSeconds();
+      var day = now.getDay();
+      var date = now.getDate();
+      var month = now.getMonth();
+      var year = now.getFullYear();
+
+      // store day and month name in an array
+      var dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+      // format date and time
+      hours = hours % 12 || 12;
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+      seconds = seconds < 10 ? '0' + seconds : seconds;
+      date = date < 10 ? '0' + date : date;
+
+      // display date and time
+      var period = hours < 12 ? 'AM' : 'PM';
+      time.innerHTML = hours + ':' + minutes + ':' + seconds + ' ' + period;
+      dateTime.innerHTML = dayNames[day] + ', ' + monthNames[month] + ' ' + date + ', ' + year;
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
+
+<br><br><br>
+<center>
+<button id="submit">STOPWATCH</button>
+<style type="text/css">
+#submit {
+ background-color: #9999FF;
+ padding: .5em;
+ -moz-border-radius: 5px;
+ -webkit-border-radius: 5px;
+ border-radius: 6px;
+ color: #000000;
+ font-family: 'Oswald';
+ font-size: 20px;
+ text-decoration: none;
+ border: none;
+}
+#submit:hover {
+ border: none;
+ background: orange;
+ box-shadow: 0px 0px 1px #9999FF;
+}
+</style>
+</center>
+
+
+</body>
+</html>
